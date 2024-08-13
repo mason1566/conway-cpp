@@ -28,7 +28,7 @@ public:
         {
             for (int y = 0; y < HEIGHT; y++)
             {
-                nextCells.at(x).at(y) = (int)rand() % 2 == 0;
+                nextCells.at(x).at(y) = (int)rand() % 3 == 0;
             }
         }
         return true;
@@ -83,11 +83,11 @@ public:
 
                 // Set cells based on Conway's Game of Life rules:
                 if (currentCells.at(x).at(y) && (numNeighbours == 2 || numNeighbours == 3))
-                    nextCells.at(x).at(y) = false;
+                    nextCells.at(x).at(y) = true;
                 else if (!currentCells.at(x).at(y) && numNeighbours == 3)
                     nextCells.at(x).at(y) = true;
                 else
-                    currentCells.at(x).at(y) = false;
+                    nextCells.at(x).at(y) = false;
             }
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(300));
